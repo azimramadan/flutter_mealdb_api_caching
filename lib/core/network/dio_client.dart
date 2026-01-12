@@ -68,7 +68,7 @@ class DioClient implements INetworkClient {
     } on TimeoutException {
       throw const TimeoutException();
     } catch (e) {
-      throw NetworkException('Unexpected error: $e');
+      throw GenericNetworkException('Unexpected error: $e');
     }
   }
 
@@ -95,7 +95,7 @@ class DioClient implements INetworkClient {
       }
     }
 
-    throw const NetworkException('Max retries reached');
+    throw const GenericNetworkException('Max retries reached');
   }
 
   NetworkException _handleDioError(DioException error) {
@@ -111,13 +111,13 @@ class DioClient implements INetworkClient {
         );
 
       case DioExceptionType.cancel:
-        return const NetworkException('Request cancelled');
+        return const GenericNetworkException('Request cancelled');
 
       case DioExceptionType.connectionError:
         return const NoInternetException();
 
       default:
-        return NetworkException('Network error: ${error.message}');
+        return GenericNetworkException('Network error: ${error.message}');
     }
   }
 }

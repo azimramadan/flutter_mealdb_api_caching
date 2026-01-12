@@ -11,8 +11,8 @@ abstract class AppException implements Exception {
   String toString() => message;
 }
 
-class NetworkException extends AppException {
-  const NetworkException([super.message = 'Network error occurred']);
+abstract class NetworkException extends AppException {
+  const NetworkException(super.message);
 }
 
 class NoInternetException extends NetworkException {
@@ -44,4 +44,12 @@ class ServerException extends NetworkException {
         return ServerException('Server error: $statusCode');
     }
   }
+}
+
+class GenericNetworkException extends NetworkException {
+  const GenericNetworkException([super.message = 'Network error occurred']);
+}
+
+class CacheException extends AppException {
+  const CacheException([super.message = 'Cache error occurred']);
 }
