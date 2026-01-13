@@ -8,9 +8,30 @@ abstract class TheMealDbApiConstants {
 
   static const String listEndpoint = 'list.php';
   static const String filterEndpoint = 'filter.php';
+  static const String searchEndpoint = 'search.php';
 
   /// 'listValue' is used with listEndpoint to fetch all categories.
   /// For filterEndpoint, 'c' takes a specific category name instead of 'listValue'.
   static const String categoryParam = 'c';
+  static const String searchParam = 's';
   static const String listValue = 'list';
+
+  static const List<String> mealCategories = [
+    "Beef",
+    "Breakfast",
+    "Chicken",
+    "Dessert",
+    "Goat",
+    "Lamb",
+    "Miscellaneous",
+    "Pasta",
+    "Pork",
+    "Seafood",
+    "Side",
+    "Starter",
+    "Vegan",
+    "Vegetarian",
+  ];
+
+  static const int maxpage = 13;
 }

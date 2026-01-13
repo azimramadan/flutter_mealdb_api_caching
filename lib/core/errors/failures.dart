@@ -20,8 +20,8 @@ class NoInternetFailure extends Failure {
   const NoInternetFailure([super.message = 'No internet connection']);
 }
 
-class NetworkFailure extends Failure {
-  const NetworkFailure([super.message = 'Network error occurred']);
+class GenericNetworkFailure extends Failure {
+  const GenericNetworkFailure([super.message = 'Network error occurred']);
 }
 
 class TimeoutFailure extends Failure {
@@ -30,6 +30,10 @@ class TimeoutFailure extends Failure {
 
 class CacheFailure extends Failure {
   const CacheFailure([super.message = 'Cache error occurred']);
+}
+
+class InvalidInputFailure extends Failure {
+  const InvalidInputFailure([super.message = 'Invalid input']);
 }
 
 class UnknownFailure extends Failure {

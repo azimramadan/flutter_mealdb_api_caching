@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:mealdb_api_caching/core/constants/meal_db_api_constants.dart';
 import 'package:mealdb_api_caching/features/meals/domain/entities/meal.dart';
 
 import '../../../../core/errors/failures.dart';
@@ -13,7 +14,14 @@ class GetMeals {
 
   /// Execute the use case
   /// Returns Either<Failure, List<Meal>>
-  Future<Either<Failure, List<Meal>>> call() async {
-    return await repository.getMeals();
+  Future<Either<Failure, List<Meal>>> call({int page = 0}) async {
+    if (page < 0 || page > TheMealDbApiConstants.maxpage) {
+      return Left(
+        InvalidInputFailure(
+          'Page number must be between 0 and ${TheMealDbApiConstants.maxpage}',
+        ),
+      );
+    }
+    return await repository.getMeals(page: page);
   }
 }

@@ -6,7 +6,7 @@ import '../../../../core/errors/failures.dart';
 /// Repository interface - defines what data operations are needed
 /// Implementation details are in data layer
 abstract class MealRepository {
-  Future<Either<Failure, List<Meal>>> getMeals();
+  Future<Either<Failure, List<Meal>>> getMeals({int page = 0});
 
   Future<Either<Failure, List<Meal>>> searchMeals(String query);
 }
